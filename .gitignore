@@ -1,0 +1,15 @@
+*.o
+*.val
+*.aux
+*.log
+*.ps
+*.dvi
+*.bbl
+*.blg
+*.a
+makeCproject
+doc/*.pdf
+doc/version.tex
+doc/date.tex
+build
+src/valgrind.sh

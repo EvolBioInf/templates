@@ -1,0 +1,28 @@
+CC=gcc
+# export VERSION = $(shell bash ../scripts/version.sh) 
+# export DATE    = $(shell bash ../scripts/date.sh)
+CFLAGS         = -DVERSION=\"$(VERSION)\" -DDATE=\"$(DATE)\" -O3 -Wall -Wshadow -pedantic -std=gnu99 -g -I../common/ -L../common/ #-pg
+
+SRCFILES  = makeCproject.c interface.c
+OBJFILES  = makeCproject.o interface.o
+LIBS      = -lcommon
+EXECFILE  = makeCproject
+DIRECTORY = makeCproject
+
+.PHONY : all
+all : $(EXECFILE)
+$(EXECFILE) : $(OBJFILES)
+	$(CC) $(CFLAGS) -o $(EXECFILE) $(OBJFILES) $(LIBS)
+interface.o: interface.h
+eprintf.o: eprintf.h
+
+clean:
+	rm -f *.o *~
+test:
+	bash ../scripts/EXE.sh 
+tar:
+	mkdir $(DIRECTORY)_$(VERSION)
+	cp -rf $(SRCFILES) *.h  README.md Makefile ../doc/EXE.pdf $(DIRECTORY)_$(VERSION)
+	tar cvzfh $(EXECFILE)_$(VERSION).tgz $(DIRECTORY)_$(VERSION)
+	mv $(EXECFILE)_$(VERSION).tgz ../
+	/bin/rm -r $(DIRECTORY)_$(VERSION)
