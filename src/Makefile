@@ -1,6 +1,6 @@
 CC=gcc
-# export VERSION = $(shell bash ../scripts/version.sh) 
-# export DATE    = $(shell bash ../scripts/date.sh)
+export VERSION = $(shell bash ../scripts/version.sh) 
+export DATE    = $(shell bash ../scripts/date.sh)
 CFLAGS         = -DVERSION=\"$(VERSION)\" -DDATE=\"$(DATE)\" -O3 -Wall -Wshadow -pedantic -std=gnu99 -g -I../common/ -L../common/ #-pg
 
 SRCFILES  = makeCproject.c interface.c
