@@ -2,7 +2,7 @@ all:
 	make -C common
 	make -C src
 	mkdir -p build
-	cp src/PROGNAME build
+	cp src/testProject build
 test:
 	make -C src test
 clean:

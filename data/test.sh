@@ -1,10 +1,10 @@
-./exe > tmp.out
-DIFF=$(diff tmp.out ../data/exe.out)
+./PROGNAME > tmp.out
+DIFF=$(diff tmp.out ../data/PROGNAME.out)
 if [ "$DIFF" == "" ] 
 then
-    printf "Test(exe)\tpass\n"
+    printf "Test(PROGNAME)\tpass\n"
 else
-    printf "Test(exe)\tfail\n"
+    printf "Test(PROGNAME)\tfail\n"
     echo ${DIFF}
 fi
 

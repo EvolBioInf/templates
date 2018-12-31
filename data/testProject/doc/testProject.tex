@@ -15,8 +15,8 @@
 \textheight=23cm
 \begin{document}
 
-\title{\texttt{PROGNAME} \input{version}: \emph{Description}}
-\author{\input{author}}
+\title{\texttt{testProject} \input{version}: \emph{Description}}
+\author{\input{author}\\\small\input{institution}}
 \date{\input{date}}
 \maketitle
 
@@ -24,25 +24,25 @@
 \emph{Introduction}
 
 \section{Getting Started}
-The program \texttt{PROGNAME} was written in C on a computer running Linux.
+The program \texttt{testProject} was written in C on a computer running Linux.
 Please contact \texttt{\input{email}} if there are any problems
 with the program.
 \begin{itemize}
 \item Obtain the package\\
-\texttt{git clone https://www.github.com/\input{repo}/PROGNAME}
+\texttt{git clone https://www.github.com/\input{repo}/testProject}
 \item Change into the directory just downloaded
 \begin{verbatim}
-cd PROGNAME
+cd testProject
 \end{verbatim}
-and make \texttt{PROGNAME}
+and make \texttt{testProject}
 \begin{verbatim}
 make
 \end{verbatim}
-\item Test \texttt{PROGNAME}
+\item Test \texttt{testProject}
 \begin{verbatim}
 make test
 \end{verbatim}
-\item The executable \texttt{PROGNAME} is located in the
+\item The executable \texttt{testProject} is located in the
   directory \texttt{build}. Place it into your \texttt{PATH}.
 \item Make the documentation
 \begin{verbatim}
@@ -52,7 +52,7 @@ This calls \LaTeX{}, so document construction depends on a reasonably
 complete \texttt{latex} installation. The typeset documentation is located
 in
 \begin{verbatim}
-doc/PROGNAME.pdf
+doc/testProject.pdf
 \end{verbatim}
 \end{itemize}
 

@@ -1,3 +1,11 @@
+/***** interface.h ***************************************************
+ * Description: DESCRIPTION
+ * Author: AUTHOR
+ * Institution: INSTITUTION
+ * Email: EMAIL
+ * License: LICENSE
+ * Date: Wed Dec 26 10:19:39 2018
+ *********************************************************************/
 #ifndef INTERFACE
 #define INTERFACE
 
@@ -7,7 +15,7 @@
 typedef struct args{
   char    h; /* help message?         */
   char    v; /* version message?      */
-  char  err; /* error                 */
+  char    e; /* error                 */
   int     i; /* iterations            */
   char **fi; /* input files           */
   int    nf; /* number of input files */

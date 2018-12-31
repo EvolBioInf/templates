@@ -11,16 +11,10 @@
 \bibliographystyle{plainnat}
 \oddsidemargin=0cm
 \evensidemargin=0cm
-\newcommand{\be}{\begin{enumerate}}
-\newcommand{\ee}{\end{enumerate}}
-\newcommand{\bi}{\begin{itemize}}
-\newcommand{\ei}{\end{itemize}}
-\newcommand{\I}{\item}
-\newcommand{\ty}{\texttt}
 \textwidth=16cm
 \textheight=23cm
 \begin{document}
-\title{\ty{EXE} \input{version}: <Description>}
+\title{\texttt{makeCproject} \input{version}: <Description>}
 \author{Bernhard Haubold\\\small Max-Planck-Institute for Evolutionary
   Biology, Pl\"on, Germany}
 \date{\input{date}}
@@ -28,38 +22,39 @@
 \section{Introduction} 
 
 \section{Getting Started}
-The program \ty{EXE} was written in C on a computer running Linux.
-Please contact \ty{haubold@evolbio.mpg.de} if there are any problems
+The program \texttt{makeCproject} was written in C on a computer running Linux.
+Please contact \texttt{haubold@evolbio.mpg.de} if there are any problems
 with the program.
-\bi \I Obtain the package
+\begin{itemize}
+\item Obtain the package
 \begin{verbatim}
-git clone https://www.github.com/evolbioinf/EXE
+git clone https://www.github.com/evolbioinf/makeCproject
 \end{verbatim}
-\I Change into the directory just downloaded
+\item Change into the directory just downloaded
 \begin{verbatim}
-cd EXE
+cd makeCproject
 \end{verbatim}
-and make \ty{EXE}
+and make \texttt{makeCproject}
 \begin{verbatim}
 make
 \end{verbatim}
-\I Test \ty{EXE}
+\item Test \texttt{makeCproject}
 \begin{verbatim}
 make test
 \end{verbatim}
-\I The executable \ty{EXE} is located in the
-directory \ty{build}. Place it into your \ty{PATH}.
-\I  Make the documentation
+\item The executable \texttt{makeCproject} is located in the
+directory \texttt{build}. Place it into your \texttt{PATH}.
+\item  Make the documentation
 \begin{verbatim}
 make doc
 \end{verbatim}
 This calls \LaTeX{}, so document construction depends on a reasonably
-complete \ty{latex} installation. The typeset documentation is located
+complete \texttt{latex} installation. The typeset documentation is located
 in
 \begin{verbatim}
-doc/EXE.pdf
+doc/makeCproject.pdf
 \end{verbatim}
-\ei
+\end{itemize}
 
 \section{Change Log}
 Please use
@@ -68,6 +63,6 @@ git log
 \end{verbatim}
 to list the change history of this program.
 
-\bibliography{ref}
+%%\bibliography{ref}
 \end{document}
 

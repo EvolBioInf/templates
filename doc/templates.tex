@@ -1,0 +1,246 @@
+\documentclass[a4paper, english]{article}
+\usepackage{graphics,eurosym,latexsym}
+\usepackage{listings}
+\usepackage{pst-all}
+\usepackage{algorithmic,algorithm}
+\lstset{columns=fixed,basicstyle=\ttfamily,numbers=left,numberstyle=\tiny,stepnumber=5,breaklines=true}
+\usepackage{times}
+\usepackage{babel}
+\usepackage[useregional]{datetime2}
+\usepackage[round]{natbib}
+\bibliographystyle{plainnat}
+\oddsidemargin=0cm
+\evensidemargin=0cm
+\textwidth=16cm
+\textheight=23cm
+\begin{document}
+\title{\texttt{templates} \input{version}: <Description>}
+\author{Bernhard Haubold\\\small Max-Planck-Institute for Evolutionary
+  Biology, Pl\"on, Germany}
+\date{\input{date}}
+\maketitle
+\section{Introduction} 
+Programming of any kind often starts from a template rather than from
+scratch. The package \ty{templates} consists of programs for
+generating such templates. It contains two programs,
+\texttt{makeCfile} and \texttt{makeCproject}. \texttt{MakeCfile}
+generates single files with a C-style header. \texttt{MakeCproject}
+generates a project template complete with documentation, testing, and
+\texttt{git} integration.
+
+\section{Getting Started}
+\texttt{Templates} is written in C on a computer running Linux.
+Please contact \texttt{haubold@evolbio.mpg.de} if there are any problems.
+\begin{itemize}
+\item Obtain the package
+\begin{verbatim}
+git clone https://www.github.com/evolbioinf/templates
+\end{verbatim}
+\item Change into the directory just downloaded
+\begin{verbatim}
+cd templates
+\end{verbatim}
+and make the programs
+\begin{verbatim}
+make
+\end{verbatim}
+\item Test the package
+\begin{verbatim}
+make test
+\end{verbatim}
+\item The executables are now located in the directory
+  \texttt{build}. Place them into your \texttt{PATH}.
+\item  Make the documentation
+\begin{verbatim}
+make doc
+\end{verbatim}
+This command calls \LaTeX{}, so document construction depends on a reasonably
+complete \texttt{latex} installation. The typeset documentation is located
+in
+\begin{verbatim}
+doc/templates.pdf
+\end{verbatim}
+\end{itemize}
+
+\section{Tutorial}
+\subsection{\texttt{MakeCfile}}
+\begin{itemize}
+\item List the options
+\begin{verbatim}
+makeCfile -h
+\end{verbatim}
+\item Generate a new file
+\begin{verbatim}
+makeCfile -a "My Name" foo.c
+\end{verbatim}
+The \ty{-a} option for \emph{author} is mandatory.
+\item Look at the new file
+\begin{verbatim}
+cat foo.c
+\end{verbatim}
+\item If you repeat the last command, \ty{makeCfile} refuses to
+  overwrite \texttt{foo.c}. This prevents files being accidentally
+  overwritten.
+\item By default, the width of the header is equal to the length of
+  its longest line. If that is less than the length of the top line,
+  the header length jumps to 70, for example
+\begin{verbatim}
+./makeCfile -D D -d d -a A longfilename.c
+\end{verbatim}
+\item This default behavior can be overridden by directly setting the header
+  width using the option \texttt{-w}
+\begin{verbatim}
+rm longfilename.c
+./makeCfile -D D -d d -a A -w 5 longfilename.c
+\end{verbatim}
+\end{itemize}
+
+\subsection{\texttt{MakeCproject}}
+\begin{itemize}
+\item List options
+\begin{verbatim}
+makeCproject -h
+\end{verbatim}
+\item Generate a project
+\begin{verbatim}
+makeCproject proj
+\end{verbatim}
+\item Change into the new directory
+\begin{verbatim}
+cd proj
+\end{verbatim}
+\item List its contents
+\begin{verbatim}
+ls
+common data  doc  Makefile  README.md  scripts  src
+\end{verbatim}
+Each of these files and directories contain typical code examples for
+parts of a coding project:
+\begin{itemize}
+  \item The directory \texttt{common} contains the files \texttt{eprintf.c},
+    \texttt{eprintf.h}, and \ty{Makefile}. The files
+    \texttt{eprintf.*} contain code for safely allocating memory taken
+    from  \citep[ch. 4]{ker99:pra}. Such external code is usually
+    incorporated into a library and hence the \texttt{Makefile}
+    contains instructions for library construction executed later when we
+    make the entire project.
+  \item The directory \texttt{data} contains the file
+    \texttt{proj.out}, which is later used for testing the project.
+  \item The directory \texttt{doc} contains \LaTeX{} code for
+    typesetting documentation.
+  \item The file \ty{Makefile} is used for making the project.
+  \item The file \ty{README.md} contains a brief description of the
+    in \emph{markdown} (\texttt{*.md}) typesetting.
+  \item The directory \texttt{scripts} contains scripts for building
+    and testing the project.
+  \item The directory \texttt{src} contains the sources for a program
+    called \texttt{proj}.
+\end{itemize}
+\item Make the project
+\begin{verbatim}
+make
+\end{verbatim}
+This executes the instructions in the \texttt{Makefile} and first generates
+the library
+\begin{verbatim}
+common/libcommon.a
+\end{verbatim}
+and then the program
+\begin{verbatim}
+src/proj
+\end{verbatim}
+which uses the library. The \texttt{make} command also generates a new
+directory, \texttt{build}, and places a copy of \texttt{proj} into it.
+\item Run the new program
+\begin{verbatim}
+./build/proj 
+Test output.
+\end{verbatim}
+\item List its options
+\begin{verbatim}
+./build/proj -h
+\end{verbatim}
+\item Run the program
+\begin{verbatim}
+./build/proj -i 2
+\end{verbatim}
+\item Try the automated testing mechanism
+\begin{verbatim}
+make test
+\end{verbatim}
+The important output line begins with
+\begin{verbatim}
+Test(proj)
+\end{verbatim}
+followed by \texttt{pass} or \texttt{fail} (it should be
+\texttt{pass}). The script generating this output is
+\begin{verbatim}
+scripts/proj.sh
+\end{verbatim}
+Use it as a model for your own test routines.
+\item Take a look at the version information
+\begin{verbatim}
+./build/proj -v
+\end{verbatim}
+This is generated from the latest \texttt{git}\footnote{Common
+  software for versioning source files.} tag and commit. To see
+how this works, fist take a look at the \texttt{git} tags for the
+project
+\begin{verbatim}
+git tag
+v0.1
+\end{verbatim}
+Next, we change the project slightly and \textit{commit} the change. 
+Open the file
+\begin{verbatim}
+src/proj.c
+\end{verbatim}
+and change the line
+\begin{verbatim}
+printf("Test output.\n");
+\end{verbatim}
+to, say,
+\begin{verbatim}
+printf("Test out.\n");
+\end{verbatim}
+Add the change to the \texttt{git} repository and commit it
+\begin{verbatim}
+git add src/proj.c 
+git commit -m "Test commit"
+\end{verbatim}
+\item Make the project again
+\begin{verbatim}
+make clean
+make
+\end{verbatim}
+and take a look at the version
+\begin{verbatim}
+./build/proj -v
+\end{verbatim}
+Note the \texttt{-1} that now follows the tag number.
+\item The tag is also passed on to the documentation, which helps
+  keeping it synchronized with the program. The command
+\begin{verbatim}
+make doc
+\end{verbatim}
+generates the documentation file
+\begin{verbatim}
+doc/proj.pdf
+\end{verbatim}
+When you open it, you find the tag number in the title. Note that the
+commit we just executed is not passed on. Many code changes do not
+warrant a change in the documentation, hence the commit count is
+ignored in the documentation. Conversely, whenever the documentation
+is substantially revised, a new \texttt{git} tag should be set.
+\end{itemize}
+
+\section{Change Log}
+Please use
+\begin{verbatim}
+git log
+\end{verbatim}
+to list the change history of this program.
+
+%%\bibliography{ref}
+\end{document}
+

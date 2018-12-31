@@ -13,3 +13,4 @@ doc/version.tex
 doc/date.tex
 build
 src/valgrind.sh
+common/*.txt
