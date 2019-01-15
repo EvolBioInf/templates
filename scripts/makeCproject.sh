@@ -1,3 +1,6 @@
+if [ -d "testProject" ]; then
+    rm -rf testProject
+fi
 ./makeCproject -a "A. N. Author" testProject 2>&1 > /dev/null
 cd testProject
 make
