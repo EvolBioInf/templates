@@ -6,8 +6,8 @@ all:
 	echo $(VERSION) > version.tex
 	echo $(DATE)    > date.tex
 	latex  $(PROG)
-	# bibtex $(PROG)
-	# latex  $(PROG)
+	bibtex $(PROG)
+	latex  $(PROG)
 	latex  $(PROG)
 	dvipdf $(PROG)
 clean:	
