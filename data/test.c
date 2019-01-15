@@ -1,5 +1,5 @@
 /***** test.c ***************
  * Description: <Description>
- * Author: Bernhard Haubold
+ * Author: A. N. Author
  * Date: Date
  ****************************/
