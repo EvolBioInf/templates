@@ -8,6 +8,7 @@
 *.blg
 *.a
 makeCproject
+makeCfile
 doc/*.pdf
 doc/version.tex
 doc/date.tex
