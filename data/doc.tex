@@ -6,7 +6,7 @@
 \usepackage{algorithmic,algorithm}
 \usepackage{times}
 \usepackage{babel}
-\usepackage[useregional]{datetime2}
+\usepackage[nodayofweek]{datetime}
 \usepackage[round]{natbib}
 \bibliographystyle{plainnat}
 \oddsidemargin=0cm
@@ -17,7 +17,8 @@
 
 \title{\texttt{PROGNAME} \input{version}: \emph{Description}}
 \author{\input{author}}
-\date{\input{date}}
+\input{date}
+\date{\displaydate{tagDate}}
 \maketitle
 
 \section{Introduction} 
@@ -48,9 +49,9 @@ make test
 \begin{verbatim}
 make doc
 \end{verbatim}
-This calls \LaTeX{}, so document construction depends on a reasonably
-complete \texttt{latex} installation. The typeset documentation is located
-in
+This calls the typesetting program \texttt{latex}, so please make sure
+it is installed before making the documentation. The typeset manual is
+located in
 \begin{verbatim}
 doc/PROGNAME.pdf
 \end{verbatim}
