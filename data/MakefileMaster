@@ -4,7 +4,7 @@ all:
 	mkdir -p build
 	cp src/PROGNAME build
 test:
-	make -C src test
+	@make -s -C src test
 clean:
 	make -C common clean
 	make -C src    clean

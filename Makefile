@@ -6,8 +6,8 @@ all:
 	cp srcMakeCproject/makeCproject build
 	cp srcMakeCfile/makeCfile       build
 test:
-	make -C srcMakeCfile    test
-	make -C srcMakeCproject test
+	@make -s -C srcMakeCfile    test
+	@make -s -C srcMakeCproject test
 clean:
 	make -C common          clean
 	make -C srcMakeCfile    clean
